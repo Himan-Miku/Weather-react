@@ -2,14 +2,14 @@ import { useRef, useState } from "react";
 import WeatherTypes from "../src/utilities/WeatherTypes.js";
 
 function App() {
-  const API_KEY = "5af51bb57b0d33be99a7dc950204ce73";
+  const API_key = import.meta.env.VITE_API_KEY;
   const [weatherData, setWeatherData] = useState(null);
   const [showWeather, setShowWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
 
   const fetchWeather = async () => {
-    const Url = `https://api.openweathermap.org/data/2.5/weather?q=${inputRef.current.value}&units=metric&appid=${API_KEY}`;
+    const Url = `https://api.openweathermap.org/data/2.5/weather?q=${inputRef.current.value}&units=metric&appid=${API_key}`;
     setLoading(true);
     await fetch(Url)
       .then((res) => res.json())
